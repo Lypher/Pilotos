@@ -31,7 +31,7 @@ const getAllDrivers = async () => {
 };
 
 const getDetailDriver = async (id, source) => {
-  const driver = source === "json" ? infoDrivers : await Driver.findByPk(id);
+  const driver = source === "db" ? infoDrivers : await Driver.findByPk(id);
 
   return driver;
 };
