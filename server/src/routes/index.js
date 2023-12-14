@@ -1,5 +1,4 @@
 const { Router } = require("express");
-
 const driversRouter = require("./driversRouter");
 const teamsRouter = require("./teamsRouter");
 

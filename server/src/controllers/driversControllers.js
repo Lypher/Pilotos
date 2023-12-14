@@ -10,7 +10,8 @@ const createDriverDB = async (
   description,
   image,
   nationality,
-  dob
+  dob,
+  teams
 ) => {
   return await Driver.create({
     id,
@@ -20,6 +21,7 @@ const createDriverDB = async (
     image,
     nationality,
     dob,
+    teams,
   });
 };
 
@@ -55,18 +57,24 @@ const postDriver = async (
   description,
   image,
   nationality,
-  dob
+  dob,
+  teams
 ) => {
-  const newDriver = await Driver.create({
-    name,
-    surname,
-    description,
-    image,
-    nationality,
-    dob,
-  });
-
-  return newDriver;
+  try {
+    const newDriver = await Driver.create({
+      name,
+      surname,
+      description,
+      image,
+      nationality,
+      dob,
+      teams,
+    });
+    return newDriver;
+  } catch (error) {
+    console.error("Error al crear un nuevo conductor:", error);
+    throw error;
+  }
 };
 
 module.exports = { getAllDrivers, getDetailDriver, getNameDriver, postDriver };

@@ -1,34 +1,35 @@
-const { Team } = require("../db");
 const fs = require("fs");
 const path = require("path");
+const { Team } = require("../db");
 
 const filePath = path.join(__dirname, "..", "..", "api", "db.json");
 const rawData = fs.readFileSync(filePath);
 const driversData = JSON.parse(rawData).drivers;
 
 const getAllTeams = async () => {
-  const dbTeams = await Team.findAll();
-  console.log(dbTeams);
-  if (dbTeams === 0) {
-    const teamsJson = await driversData;
+  let dbTeams = await Team.findAll();
 
-    const allTeams = [];
-    teamsJson.forEach((driver) => {
-      const team = driver.team;
+  if (dbTeams.length === 0) {
+    const teamsJson = driversData;
 
-      if (team) {
-        const splitTeams = team.split(", ");
-        allTeams.push(...splitTeams);
-      }
-    });
+    const allTeams = teamsJson
+      .map((driver) => {
+        const team = driver.teams;
+        if (team) {
+          const splitTeams = team.split(", ");
+          return splitTeams;
+        }
+      })
+      .flat();
 
-    dbTeams = [...new Set(allTeams)];
-
-    dbTeams.forEach((name) => {
-      postTeam(name);
-    });
+    dbTeams = allTeams;
   }
   return dbTeams;
 };
 
-module.exports = { getAllTeams };
+const createTeam = async (team) => {
+  const newTeam = await Team.create(team);
+  return newTeam;
+};
+
+module.exports = { getAllTeams, createTeam };

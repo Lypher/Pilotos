@@ -1,4 +1,5 @@
 const { getAllTeams } = require("../controllers/teamsControllers");
+const { Team } = require("../db");
 
 const getTeamsHandler = async (req, res) => {
   const allTeams = await getAllTeams();
