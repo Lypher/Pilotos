@@ -6,7 +6,7 @@ function Card(driver) {
   console.log(driver);
   return (
     <Link to={`/detail/${driver.driver.id}`} className="card">
-      <h2>Name:{driver.driver.name}</h2>
+      <h2>Name: {driver.driver.name}</h2>
       <img src={driver.driver.image} alt="" />
       <h2>Nationality: {driver.driver.nationality}</h2>
     </Link>

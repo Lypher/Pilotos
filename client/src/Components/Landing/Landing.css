@@ -1,0 +1,40 @@
+.container {
+  background-image: url(https://www.hintsa.com/wp-content/uploads/2021/06/Wallpaper-Formula-1-McLaren-Formula-1-2019-Year-yellow-.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container:hover .drivers-btn {
+  display: flex;
+  animation: entrarDesdeIzquierda 0.5s ease-in-out forwards;
+}
+
+@keyframes entrarDesdeIzquierda {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(-10%) translateX(-50%); /* Termina centrado en la pantalla */
+  }
+}
+
+.drivers-btn {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 10px 20px;
+  font-size: 100px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-shadow: black 10px 5px;
+}
