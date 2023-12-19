@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllDrivers } from "../../redux/actions";
+import "./Cards.css"; // Asegúrate de ajustar la ruta según sea necesario
 
 function Cards() {
   const [drivers, setDrivers] = useState([]);
@@ -17,8 +18,8 @@ function Cards() {
 
   return (
     <div>
-      <h1>hola</h1>
-      <div>
+      <h1>Cards:</h1>
+      <div className="cards-container">
         {first10Drivers.map((driver) => (
           <Card key={driver.id} driver={driver} />
         ))}
