@@ -17,7 +17,7 @@ const getAllDrivers = async () => {
 const getDetailDriver = async (id, source) => {
   const driver =
     source === "json"
-      ? driversData
+      ? driversData[id - 1]
       : await Driver.findByPk(id, {
           include: {
             model: Team,

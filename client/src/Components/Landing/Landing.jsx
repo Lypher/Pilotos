@@ -7,7 +7,7 @@ function Landing() {
 
   return (
     <div className="container">
-      <h1 className="drivers-btn" onClick={() => navigate("/home")}>
+      <h1 className="drivers-btn" onClick={() => navigate("/Home")}>
         Enter
       </h1>
     </div>
