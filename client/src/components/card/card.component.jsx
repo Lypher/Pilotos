@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Card.css"; // Asegúrate de ajustar la ruta según sea necesario
+import "./card.styles.css";
 
-function Card(driver) {
+export default function Card(driver) {
   return (
     <Link to={`/detail/${driver.driver.id}`} className="card">
       <h2>Name: {driver.driver.name}</h2>
-      <img src={driver.driver.image} alt="" />
+      <img src={driver.driver.image} alt="Small card with info of the driver" />
       <h2>Nationality: {driver.driver.nationality}</h2>
+      {/* <button onClick={() => onclose(driver.driver.id)} >X</button> */}
     </Link>
   );
 }
-export default Card;

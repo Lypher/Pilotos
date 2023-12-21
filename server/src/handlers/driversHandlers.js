@@ -11,14 +11,17 @@ const { getAllDrivers, getDetailDriver, getNameDriver, postDriver } = require(".
 
 const getDetailHandler = async (req, res) => {
     const { id } = req.params
-
     const source = isNaN(id) ? "db" : "json"
 
     try {
         const detailDriver = await getDetailDriver(id, source)
-        return res.status(200).json(detailDriver)
+        if (detailDriver) {
+            return res.status(200).json(detailDriver)
+        } else {
+            return res.status(404).send("No existe ese id")
+        }
     } catch (error) {
-        return res.status(404).send(error)
+        return res.status(500).send(error)
     }
 }
 
