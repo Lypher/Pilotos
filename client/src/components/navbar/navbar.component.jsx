@@ -1,19 +1,20 @@
 import React from "react";
+import "./navbar.styles.css";
 import { useNavigate } from "react-router";
+
 function Navbar() {
   const navigate = useNavigate();
   return (
-    <div>
-      <div className="navbar">
-        <div>
-          <button onClick={() => navigate("/drivers")}>All drives</button>
-
-          <button>Teams</button>
-          <button>Form</button>
-          <button>About</button>
-          <input type="text" name="" id="" />
-          <button>GO</button>
-        </div>
+    <div className="navbar">
+      <div className="navigation">
+        <button onClick={() => navigate("/drivers")}>All drivers</button>
+        <button>Teams</button>
+        <button onClick={() => navigate("/form")}>Form</button>
+        <button onClick={() => navigate("/about")}>About</button>
+      </div>
+      <div className="searchbar">
+        <input type="text" name="" id="" placeholder=" Search a driver" />
+        <button>GO</button>
       </div>
     </div>
   );

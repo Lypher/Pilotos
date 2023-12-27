@@ -1,4 +1,4 @@
-import { GET_ALL_DRIVERS, GET_DRIVERS_NAME, GET_TEAMS } from './actionTypes'
+import { GET_ALL_DRIVERS, GET_DRIVERS_NAME, GET_TEAMS, ORDER } from './actionTypes'
 import axios from 'axios'
 export const URL = 'http://localhost:3001'
 
@@ -30,4 +30,8 @@ export const getTeams = () => {
             payload: response.data
         })
     }
+}
+
+export const order = (order) => {
+    return { type: ORDER, payload: order }
 }

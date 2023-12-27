@@ -1,14 +1,8 @@
 body {
-  background-image: url(https://www.cnet.com/a/img/resize/46b2fd5f0a17ea81e247b83132fff08df9cda0cb/hub/2021/07/15/56433bea-88e8-42bc-b9a7-4c158b3225b5/image.jpg?auto=webp&fit=crop&height=675&width=1200);
-  background-repeat: no-repeat;
-  background-position: initial;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.centrarSerch {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    background-image: url(https://www.cnet.com/a/img/resize/46b2fd5f0a17ea81e247b83132fff08df9cda0cb/hub/2021/07/15/56433bea-88e8-42bc-b9a7-4c158b3225b5/image.jpg?auto=webp&fit=crop&height=675&width=1200);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+    background-attachment: fixed;
 }

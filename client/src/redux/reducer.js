@@ -1,9 +1,10 @@
-import { GET_ALL_DRIVERS, GET_DRIVERS_NAME, GET_TEAMS } from './actionTypes'
+import { GET_ALL_DRIVERS, GET_DRIVERS_NAME, GET_TEAMS, ORDER } from './actionTypes'
 
 const initialState = {
     allDrivers: [],
     driversByName: [],
-    allTeams: []
+    allTeams: [],
+    myOrder: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allTeams: action.payload
+            }
+
+        case ORDER:
+            const orderDrivers = [...state.allDrivers]
+            return {
+                ...state,
+                myOrder:
+                    payload === "A"
+                        ? orderDrivers.sort((a, b) => a.id - b.id)
+                        : orderDrivers.sort((a, b) => b.id - a.id)
             }
 
         default:
