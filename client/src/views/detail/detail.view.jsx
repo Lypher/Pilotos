@@ -23,7 +23,7 @@ const Detail = () => {
       }
     };
 
-    return getAxios();
+    getAxios();
   }, [id]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllDrivers, getTeams } from "../../redux/actions";
+import { getAllDrivers, getTeams, getDriversByName } from "../../redux/actions";
 import Card from "../card/card.component";
 import Navbar from "../navbar/navbar.component";
 import "./cards.styles.css";
@@ -8,17 +8,17 @@ import "./cards.styles.css";
 function Cards() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
-  const dispatch = useDispatch();
-
   const allDrivers = useSelector((state) => state.allDrivers);
   const allTeams = useSelector((state) => state.allTeams);
+  const driversByName = useSelector((state) => state.driversByName);
+  let totalPages = 0;
+  let paginatedList;
 
-  useEffect(() => {
-    dispatch(getAllDrivers());
-    dispatch(getTeams());
-  }, [dispatch]);
-
-  const totalPages = Math.ceil(allDrivers.length / itemsPerPage);
+  if (driversByName.length > 0) {
+    totalPages = Math.ceil(driversByName.length / itemsPerPage);
+  } else {
+    totalPages = Math.ceil(allDrivers.length / itemsPerPage);
+  }
 
   const handlePage = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -35,11 +35,17 @@ function Cards() {
       handlePage(currentPage + 1);
     }
   };
-
-  const paginatedList = allDrivers.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  if (driversByName.length > 0) {
+    paginatedList = driversByName.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  } else {
+    paginatedList = allDrivers.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+  }
 
   return (
     <div>
@@ -51,9 +57,9 @@ function Cards() {
         <button>A-Z</button>
         <button>Z-A</button>
         <select>
-          {allTeams.map((team) => (
-            <option value={team.name} key={team.id}>
-              {team.name}
+          {allTeams.map((teams) => (
+            <option value={teams.name} key={teams.id}>
+              {teams.name}
             </option>
           ))}
         </select>
